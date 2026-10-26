@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FULEX GAMING - Geleceğin Oyun Portalı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f131d;
+      --bg-card-hover: #161c2b;
+      --bg-input: #121724;
+      --accent-blue: #00d2ff;
+      --accent-blue-glow: rgba(0, 210, 255, 0.4);
+      --accent-red: #ff2a5f;
+      --accent-red-glow: rgba(255, 42, 95, 0.4);
+      --accent-gold: #ffb703;
+      --text-main: #f0f3f9;
+      --text-muted: #8c96ab;
+      --border-color: #1e2638;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background: rgba(12, 16, 25, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 2rem;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px var(--accent-blue-glow);
+      overflow: hidden;
+      background: #00aaff;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+
+    .logo-text span {
+      color: var(--accent-blue);
+      text-shadow: 0 0 10px var(--accent-blue-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-blue);
+      background: rgba(0, 210, 255, 0.08);
+    }
+
+    .header-right-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
+      color: #fff;
+      box-shadow: 0 4px 15px var(--accent-blue-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
+    }
+
+    .btn-danger {
+      background: var(--accent-red);
+      color: #fff;
+      box-shadow: 0 4px 15px var(--accent-red-glow);
+    }
+
+    .btn-danger:hover {
+      background: #e02250;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
+    /* CUSTOM DOWNLOAD BUTTON STYLING */
+    .btn-custom-download {
+      display: inline-flex;
+      align-items: center;
+      background: #11998e;
+      background: linear-gradient(90deg, #138383, #00d2ff);
+      color: #fff;
+      border-radius: 40px;
+      padding: 0;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0,210,255,0.3);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-custom-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,210,255,0.5);
+    }
+
+    .download-text-part {
+      padding: 12px 30px;
+      letter-spacing: 1px;
+    }
+
+    .download-icon-part {
+      background: #ffffff;
+      color: #0d8383;
+      padding: 12px 18px;
+      border-radius: 50% 40px 40px 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .download-icon-part svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* MAIN CONTAINER LAYOUT */
+    .main-wrapper {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* CONTENT HEADER BAR */
+    .section-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--border-color);
+      position: relative;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-tag {
+      background: var(--accent-red);
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-line {
+      height: 3px;
+      background: var(--accent-red);
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100px;
+    }
+
+    .section-link {
+      color: #7b7f9d;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .section-link:hover {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    /* GAME LIST CARDS */
+    .games-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .game-card-horizontal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .game-card-horizontal:hover {
+      border-color: rgba(0, 210, 255, 0.4);
+      background: var(--bg-card-hover);
+      transform: translateX(4px);
+    }
+
+    .game-img-wrapper {
+      position: relative;
+      height: 160px;
+      width: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .game-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .game-card-horizontal:hover .game-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .game-cat-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--accent-red);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .game-details {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .game-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .game-meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .game-meta .author {
+      color: var(--accent-red);
+      font-weight: 700;
+    }
+
+    .game-desc {
+      font-size: 0.95rem;
+      color: #a0aabe;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .game-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* GAME DETAIL VIEW CONTAINER */
+    .game-detail-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .game-detail-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .game-detail-meta {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .game-detail-banner {
+      width: 100%;
+      max-width: 850px;
+      height: 420px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+      background: #000;
+    }
+
+    .game-detail-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .game-detail-desc {
+      font-size: 1.15rem;
+      color: #d1d8e6;
+      line-height: 1.6;
+      max-width: 850px;
+      margin-bottom: 2.5rem;
+      text-align: left;
+      background: #121722;
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    /* CHAT PANEL */
+    .chat-sidebar {
+      background: #0d1017;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      height: 720px;
+      position: sticky;
+      top: 95px;
+    }
+
+    .chat-header {
+      padding: 1rem 1.2rem;
+      background: #121722;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .chat-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .chat-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #1a1d28;
+      border: 1px solid #2e3548;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .chat-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chat-content-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-user-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .chat-username {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #ffb703;
+      cursor: pointer;
+    }
+
+    .chat-username:hover {
+      text-decoration: underline;
+    }
+
+    .chat-role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid #ffb703;
+      color: #ffb703;
+      background: rgba(255, 183, 3, 0.08);
+    }
+
+    .chat-role-badge.admin {
+      border-color: #ff2a5f;
+      color: #ff2a5f;
+      background: rgba(255, 42, 95, 0.08);
+    }
+
+    .chat-role-badge.vip {
+      border-color: #00d2ff;
+      color: #00d2ff;
+      background: rgba(0, 210, 255, 0.08);
+    }
+
+    .chat-timestamp {
+      font-size: 0.8rem;
+      color: #626b80;
+      margin-left: auto;
+    }
+
+    .chat-bubble {
+      background: #151a26;
+      border: 1px solid #242c3f;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #e1e7f5;
+      font-size: 0.95rem;
+      width: fit-content;
+      max-width: 100%;
+      word-break: break-word;
+    }
+
+    .chat-input-area {
+      padding: 1rem;
+      background: #121722;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .chat-input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    /* MODALS & FORMS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 480px;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--accent-red);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    /* LOADING OVERLAY SCREEN */
+    .update-loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 7, 12, 0.96);
+      backdrop-filter: blur(15px);
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .update-loading-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .loading-spinner {
+      width: 80px;
+      height: 80px;
+      border: 6px solid rgba(0, 210, 255, 0.1);
+      border-top-color: var(--accent-blue);
+      border-bottom-color: var(--accent-red);
+      border-radius: 50%;
+      animation: spin 1s infinite linear;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+    }
+
+    .loading-bar-wrap {
+      width: 320px;
+      height: 10px;
+      background: #161a26;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .loading-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+      transition: width 0.1s linear;
+    }
+
+    @media (max-width: 900px) {
+      .main-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .chat-sidebar {
+        height: 550px;
+      }
+      .game-card-horizontal {
+        grid-template-columns: 1fr;
+      }
+      .game-img-wrapper {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div class="update-loading-overlay" id="updateScreen">
+    <div class="loading-spinner"></div>
+    <h1 class="loading-title">Yeni Oyunlar geliyor denemeyi unutmayın</h1>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar-fill" id="updateBar"></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <a class="logo-box" onclick="switchView('home')">
+        <div class="logo-icon">
+          <!-- Yeni F Logosu Görseli -->
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&auto=format&fit=crop&q=80" alt="Fulex Logo" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=100&auto=format&fit=crop&q=80'">
+        </div>
+        <div class="logo-text">FULEX <span>GAMING</span></div>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a class="nav-link active" id="nav-home" onclick="switchView('home')">Ana Sayfa</a></li>
+        <li><a class="nav-link" id="nav-nasil" onclick="switchView('nasil')">Nasıl İndirilir</a></li>
+        <li><a class="nav-link" id="nav-sistem" onclick="switchView('sistem')">Sisteme Göre Oyunlar</a></li>
+        <li><a class="nav-link" id="nav-hakkimda" onclick="switchView('hakkimda')">Hakkımda</a></li>
+      </ul>
+
+      <div class="header-right-area">
+        <a class="nav-link" id="nav-hesabim" onclick="switchView('hesabim')" style="font-weight: 700; color: #fff;">Hesabım</a>
+        <div class="user-actions" id="header-auth-area">
+          <button class="btn btn-outline" onclick="openModal('loginModal')">Giriş Yap</button>
+          <button class="btn btn-primary" onclick="openModal('registerModal')">Kayıt Ol</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+    
+    <!-- LEFT CONTENT AREA -->
+    <div>
+      <!-- HOME VIEW -->
+      <div id="view-home" class="view-section active">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-tag">DEVAMI</span>
+            <div class="section-line"></div>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="btn btn-danger" id="update-banner-btn" style="display: none; padding: 6px 14px; font-size: 0.9rem;" onclick="triggerUpdateAnimation()">GÜNCELLE</button>
+            <button class="btn btn-primary" id="add-game-btn" style="display: none; padding: 6px 14px; font-size: 0.9rem;" onclick="openModal('addGameModal')">+ Oyun Ekle</button>
+            <a class="section-link" onclick="switchView('home')">Tümünü göster</a>
+          </div>
+        </div>
+
+        <div class="games-list" id="gamesContainer">
+          <!-- Oyunlar dinamik yüklenecek -->
+        </div>
+      </div>
+
+      <!-- GAME DETAIL VIEW -->
+      <div id="view-game-detail" class="view-section">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-tag">OYUN DETAYI</span>
+            <div class="section-line"></div>
+          </div>
+          <a class="section-link" onclick="switchView('home')">← Ana Sayfaya Dön</a>
+        </div>
+        <div class="game-detail-content" id="gameDetailContainer">
+          <!-- Seçilen oyunun detayları buraya gelecek -->
+        </div>
+      </div>
+
+      <!-- NASIL İNDİRİLİR VIEW -->
+      <div id="view-nasil" class="view-section">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-tag">REHBER</span>
+            <div class="section-line"></div>
+          </div>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 2rem;">
+          <h2 style="font-size: 1.8rem; font-family: 'Orbitron'; color: #fff; margin-bottom: 1rem;">Oyunlar Nasıl İndirilir ve Kurulur?</h2>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">1. İstediğiniz oyunun üzerine tıklayarak oyun detay sayfasına gidin.</p>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">2. Sayfanın alt kısmında bulunan özel **İNDİR** butonuna tıklayın.</p>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">3. İndirme tamamlandıktan sonra arşiv dosyasını masaüstüne çıkarıp kurulumu başlatabilirsiniz.</p>
+        </div>
+      </div>
+
+      <!-- SİSTEME GÖRE OYUNLAR VIEW -->
+      <div id="view-sistem" class="view-section">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-tag">KATEGORİLER</span>
+            <div class="section-line"></div>
+          </div>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 2rem;">
+          <h2 style="font-size: 1.8rem; font-family: 'Orbitron'; color: #fff; margin-bottom: 1rem;">Sisteme Göre Oyun Önerileri</h2>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">• **Düşük Sistemli PC:** Bağımsız yapımlar ve klasik retro oyunlar.</p>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">• **Orta Sistemli PC:** Güncel e-spor oyunları ve popüler simülasyonlar.</p>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">• **Yüksek Sistemli PC:** Ray-tracing destekli devasa açık dünya yapımları.</p>
+        </div>
+      </div>
+
+      <!-- HAKKIMDA VIEW -->
+      <div id="view-hakkimda" class="view-section">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-tag">HAKKIMDA</span>
+            <div class="section-line"></div>
+          </div>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 2rem;">
+          <h2 style="font-size: 1.8rem; font-family: 'Orbitron'; color: #fff; margin-bottom: 1rem;">FULEX GAMING Hakkında</h2>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">FuleX Gaming, oyuncular için özel olarak tasarlanmış en güncel oyun indirme ve paylaşım platformudur. Oyuncu dostu arayüzü ve canlı topluluk sohbetiyle oyun dünyasının kalbi burada atıyor.</p>
+        </div>
+      </div>
+
+      <!-- HESABIM VIEW -->
+      <div id="view-hesabim" class="view-section">
+        <div class="section-header-bar">
+          <div class="section-title-wrap">
+            <span class="section-tag">Hesap Bilgileri</span>
+            <div class="section-line"></div>
+          </div>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 2rem; max-width: 600px;">
+          <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 2rem;">
+            <div id="profileAvatarDisplay" style="width: 80px; height: 80px; border-radius: 50%; background: #000; border: 2px solid var(--accent-blue); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; color: #fff; overflow: hidden;">U</div>
+            <div>
+              <h2 id="profileNameDisplay" style="font-size: 1.8rem; font-weight: 700; color: #fff;">Misafir</h2>
+              <p id="profileRoleDisplay" style="color: var(--accent-blue); font-weight: 700; margin-top: 4px;">Rütbe: Ziyaretçi</p>
+              <p id="profileMsgCount" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 2px;">Toplam Mesaj: 0</p>
+            </div>
+          </div>
+
+          <div id="profileAuthForms">
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Profil bilgilerini düzenlemek için giriş yapmalısın.</p>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-primary" onclick="openModal('loginModal')">Giriş Yap</button>
+              <button class="btn btn-outline" onclick="openModal('registerModal')">Kayıt Ol</button>
+            </div>
+          </div>
+
+          <div id="profileControlPanel" style="display: none;">
+            <div class="form-group">
+              <label class="form-label">Profil Fotoğrafı Seç (Dosya)</label>
+              <input type="file" id="updateAvatarFile" class="form-input" accept="image/*" onchange="handleFileSelect(event)">
+            </div>
+            <div class="form-group">
+              <label class="form-label">veya Profil Fotoğrafı URL</label>
+              <input type="text" id="updateAvatarInput" class="form-input" placeholder="https://ornek.com/resim.png">
+            </div>
+            <button class="btn btn-primary" onclick="saveProfileChanges()">Profili Güncelle</button>
+            <button class="btn btn-danger" style="margin-left: 10px;" onclick="logout()">Çıkış Yap</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT CHAT SIDEBAR -->
+    <aside class="chat-sidebar">
+      <div class="chat-header">
+        <div class="chat-title">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          CANLI SOHBET
+        </div>
+        <span id="onlineCount" style="font-size: 0.8rem; color: var(--text-muted);">Aktif</span>
+      </div>
+      
+      <div class="chat-messages" id="chatMessages">
+        <!-- Sohbet mesajları -->
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Mesaj yaz..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+        <button class="btn btn-primary" style="padding: 10px 14px;" onclick="sendChatMessage()">➤</button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="userManageModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('userManageModal')">&times;</button>
+      <h2 style="font-family: 'Orbitron'; font-size: 1.3rem; margin-bottom: 1rem; color: #fff;" id="manageTargetName">Kullanıcı Yönetimi</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;" id="manageTargetRole">Mevcut Rütbe: Üye</p>
+
+      <div class="form-group">
+        <label class="form-label">Yeni Rütbe Ata</label>
+        <select id="roleSelectInput" class="form-input">
+          <option value="Üye">Üye</option>
+          <option value="KRAL">KRAL</option>
+          <option value="PRO">PRO</option>
+          <option value="ADAM">ADAM</option>
+          <option value="VIP">VIP</option>
+          <option value="Admin">Admin</option>
+          <option value="Kurucu">Kurucu</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-bottom: 1rem;" onclick="applyRoleChange()">Rütbeyi Güncelle</button>
+      <button class="btn btn-danger" style="width: 100%; justify-content: center;" onclick="banTargetUser()">SİTEDEN BANLA (YASAKLA)</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+      <h2 style="font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 1.5rem; color: #fff;">Giriş Yap</h2>
+      <div class="form-group">
+        <label class="form-label">Kullanıcı Adı</label>
+        <input type="text" id="loginUsername" class="form-input" placeholder="Kullanıcı adını gir">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Şifre</label>
+        <input type="password" id="loginPassword" class="form-input" placeholder="Şifreni gir">
+      </div>
+      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="handleLogin()">Giriş Yap</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="registerModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('registerModal')">&times;</button>
+      <h2 style="font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 1.5rem; color: #fff;">Kayıt Ol</h2>
+      <div class="form-group">
+        <label class="form-label">Kullanıcı Adı</label>
+        <input type="text" id="regUsername" class="form-input" placeholder="Kullanıcı adı seç">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Şifre</label>
+        <input type="password" id="regPassword" class="form-input" placeholder="Şifre belirle">
+      </div>
+      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="handleRegister()">Hesap Oluştur</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="addGameModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('addGameModal')">&times;</button>
+      <h2 style="font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 1.5rem; color: #fff;">Yeni Oyun Ekle</h2>
+      <div class="form-group">
+        <label class="form-label">Oyun Adı</label>
+        <input type="text" id="gameTitleInput" class="form-input" placeholder="Örn: Cyberpunk 2077">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Kategori</label>
+        <input type="text" id="gameCatInput" class="form-input" placeholder="Örn: TÜRK OYUNLARI / SİMÜLATÖR">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Kapak Resmi URL</label>
+        <input type="text" id="gameImgInput" class="form-input" placeholder="https://ornek.com/resim.jpg">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Açıklama / Sistem Gereksinimleri</label>
+        <textarea id="gameDescInput" class="form-input" rows="3" placeholder="Oyun açıklaması..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">İndirme Linki</label>
+        <input type="text" id="gameUrlInput" class="form-input" placeholder="https://indir.com/oyun">
+      </div>
+      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="addNewGame()">Oyunu Yayınla & Güncelle</button>
+    </div>
+  </div>
+
+  <script>
+    let currentUser = JSON.parse(localStorage.getItem('fulex_user')) || null;
+    let users = JSON.parse(localStorage.getItem('fulex_users')) || [];
+    let bannedUsers = JSON.parse(localStorage.getItem('fulex_banned')) || [];
+    let games = JSON.parse(localStorage.getItem('fulex_games')) || [];
+    let messages = JSON.parse(localStorage.getItem('fulex_messages')) || [];
+    let isFounderClaimed = localStorage.getItem('fulex_founder_claimed') || null;
+    
+    let tempAvatarBase64 = '';
+    let selectedTargetUser = null;
+
+    function escapeHTML(str) {
+      if(!str) return '';
+      return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+      );
+    }
+
+    function initApp() {
+      if(currentUser && bannedUsers.includes(currentUser.username)) {
+        alert("Siteden banlandınız! Erişiminiz engellendi.");
+        logout();
+        return;
+      }
+      renderHeaderAuth();
+      renderGames();
+      renderChat();
+      renderProfileView();
+    }
+
+    function switchView(viewName) {
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+      
+      if(viewName === 'home') {
+        document.getElementById('view-home').classList.add('active');
+        document.getElementById('nav-home').classList.add('active');
+      } else if(viewName === 'nasil') {
+        document.getElementById('view-nasil').classList.add('active');
+        document.getElementById('nav-nasil').classList.add('active');
+      } else if(viewName === 'sistem') {
+        document.getElementById('view-sistem').classList.add('active');
+        document.getElementById('nav-sistem').classList.add('active');
+      } else if(viewName === 'hakkimda') {
+        document.getElementById('view-hakkimda').classList.add('active');
+        document.getElementById('nav-hakkimda').classList.add('active');
+      } else if(viewName === 'hesabim') {
+        document.getElementById('view-hesabim').classList.add('active');
+        document.getElementById('nav-hesabim').classList.add('active');
+        renderProfileView();
+      }
+    }
+
+    function openGameDetail(gameId) {
+      const game = games.find(g => g.id === gameId);
+      if(!game) return;
+
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      document.getElementById('view-game-detail').classList.add('active');
+
+      const container = document.getElementById('gameDetailContainer');
+      container.innerHTML = `
+        <h1 class="game-detail-title">${escapeHTML(game.title)}</h1>
+        <div class="game-detail-meta">by <span style="color:var(--accent-red); font-weight:700;">${escapeHTML(game.author)}</span> - ${escapeHTML(game.date)}</div>
+        <div class="game-detail-banner">
+          <img src="${game.image}" alt="${escapeHTML(game.title)}" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80'">
+        </div>
+        <div class="game-detail-desc">${escapeHTML(game.desc)}</div>
+        
+        <a href="${escapeHTML(game.url)}" target="_blank" class="btn-custom-download">
+          <span class="download-text-part">İNDİR</span>
+          <span class="download-icon-part">
+            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          </span>
+        </a>
+      `;
+    }
+
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    function triggerUpdateAnimation(callback) {
+      const overlay = document.getElementById('updateScreen');
+      const bar = document.getElementById('updateBar');
+      overlay.classList.add('active');
+      bar.style.width = '0%';
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        bar.style.width = progress + '%';
+        if(progress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            overlay.classList.remove('active');
+            if(callback) callback();
+          }, 400);
+        }
+      }, 150);
+    }
+
+    function renderHeaderAuth() {
+      const area = document.getElementById('header-auth-area');
+      const addBtn = document.getElementById('add-game-btn');
+      const updateBtn = document.getElementById('update-banner-btn');
+      
+      if(currentUser) {
+        let isFounder = currentUser.role === 'Kurucu';
+        if(addBtn) addBtn.style.display = isFounder ? 'inline-flex' : 'none';
+        if(updateBtn) updateBtn.style.display = isFounder ? 'inline-flex' : 'none';
+
+        area.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 10px; cursor: pointer;" onclick="switchView('hesabim')">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #000; border: 1px solid var(--accent-blue); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; overflow: hidden;">
+              ${currentUser.avatar ? `<img src="${currentUser.avatar}" style="width:100%;height:100%;object-fit:cover;">` : currentUser.username[0].toUpperCase()}
+            </div>
+            <span style="font-weight: 700; color: #fff;">${escapeHTML(currentUser.username)}</span>
+          </div>
+        `;
+      } else {
+        if(addBtn) addBtn.style.display = 'none';
+        if(updateBtn) updateBtn.style.display = 'none';
+        area.innerHTML = `
+          <button class="btn btn-outline" onclick="openModal('loginModal')">Giriş Yap</button>
+          <button class="btn btn-primary" onclick="openModal('registerModal')">Kayıt Ol</button>
+        `;
+      }
+    }
+
+    function renderGames() {
+      const container = document.getElementById('gamesContainer');
+      container.innerHTML = '';
+
+      if(games.length === 0) {
+        container.innerHTML = `<p style="color: var(--text-muted); padding: 1.5rem; text-align: center; background: var(--bg-card); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">Henüz hiç oyun eklenmedi. ${currentUser && currentUser.role === 'Kurucu' ? 'Yukarıdaki "+ Oyun Ekle" butonundan yeni oyun ekleyebilirsin.' : ''}</p>`;
+        return;
+      }
+
+      games.forEach(game => {
+        let isFounder = currentUser && currentUser.role === 'Kurucu';
+        const card = document.createElement('div');
+        card.className = 'game-card-horizontal';
+        card.onclick = (e) => {
+          if(!e.target.closest('button')) {
+            openGameDetail(game.id);
+          }
+        };
+        card.innerHTML = `
+          <div class="game-img-wrapper">
+            <span class="game-cat-badge">${escapeHTML(game.category)}</span>
+            <img src="${game.image}" alt="${escapeHTML(game.title)}" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80'">
+          </div>
+          <div class="game-details">
+            <div>
+              <h3 class="game-title">${escapeHTML(game.title)}</h3>
+              <div class="game-meta">by <span class="author">${escapeHTML(game.author)}</span> - ${escapeHTML(game.date)}</div>
+              <p class="game-desc">${escapeHTML(game.desc)}</p>
+            </div>
+            <div class="game-card-actions">
+              <button class="btn btn-primary" style="padding: 6px 16px; font-size: 0.9rem;" onclick="openGameDetail(${game.id})">İncele & İndir</button>
+              ${isFounder ? `<button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.85rem;" onclick="deleteGame(${game.id})">Sil</button>` : ''}
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderChat() {
+      const chatBox = document.getElementById('chatMessages');
+      chatBox.innerHTML = '';
+
+      if(messages.length === 0) {
+        chatBox.innerHTML = `<p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 1rem;">Henüz hiç mesaj yok. İlk mesajı sen yaz!</p>`;
+        return;
+      }
+
+      messages.forEach(msg => {
+        let badgeClass = 'chat-role-badge';
+        if(msg.role === 'Kurucu' || msg.role === 'Admin') badgeClass += ' admin';
+        else if(msg.role === 'VIP' || msg.role === 'PRO') badgeClass += ' vip';
+
+        const item = document.createElement('div');
+        item.className = 'chat-item';
+        item.innerHTML = `
+          <div class="chat-avatar">${escapeHTML(msg.user[0].toUpperCase())}</div>
+          <div class="chat-content-wrap">
+            <div class="chat-user-header">
+              <span class="chat-username" onclick="openUserManagement('${escapeHTML(msg.user)}')">${escapeHTML(msg.user)}</span>
+              <span class="${badgeClass}">✦ ${escapeHTML(msg.role)}</span>
+              <span class="chat-timestamp">${escapeHTML(msg.time)}</span>
+            </div>
+            <div class="chat-bubble">${escapeHTML(msg.text)}</div>
+          </div>
+        `;
+        chatBox.appendChild(item);
+      });
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function openUserManagement(username) {
+      if(!currentUser || currentUser.role !== 'Kurucu') return;
+      if(username === currentUser.username) {
+        alert("Kendi rütbeni veya oturumunu buradan değiştiremezsin.");
+        return;
+      }
+
+      selectedTargetUser = username;
+      document.getElementById('manageTargetName').textContent = "Kullanıcı: " + username;
+      
+      const targetObj = users.find(u => u.username === username);
+      const currentRole = targetObj ? targetObj.role : 'Üye';
+      document.getElementById('manageTargetRole').textContent = "Mevcut Rütbe: " + currentRole;
+      document.getElementById('roleSelectInput').value = currentRole;
+
+      openModal('userManageModal');
+    }
+
+    function applyRoleChange() {
+      if(!selectedTargetUser) return;
+      const newRole = document.getElementById('roleSelectInput').value;
+      
+      let idx = users.findIndex(u => u.username === selectedTargetUser);
+      if(idx !== -1) {
+        users[idx].role = newRole;
+        localStorage.setItem('fulex_users', JSON.stringify(users));
+      }
+
+      messages.forEach(m => {
+        if(m.user === selectedTargetUser) m.role = newRole;
+      });
+      localStorage.setItem('fulex_messages', JSON.stringify(messages));
+
+      closeModal('userManageModal');
+      renderChat();
+      alert(selectedTargetUser + " kullanıcısının rütbesi " + newRole + " olarak güncellendi.");
+    }
+
+    function banTargetUser() {
+      if(!selectedTargetUser) return;
+      if(confirm(selectedTargetUser + " kullanıcısını siteden BANLAMAK istediğine emin misin?")) {
+        if(!bannedUsers.includes(selectedTargetUser)) {
+          bannedUsers.push(selectedTargetUser);
+          localStorage.setItem('fulex_banned', JSON.stringify(bannedUsers));
+        }
+
+        messages = messages.filter(m => m.user !== selectedTargetUser);
+        localStorage.setItem('fulex_messages', JSON.stringify(messages));
+
+        closeModal('userManageModal');
+        renderChat();
+        alert(selectedTargetUser + " siteden yasaklandı!");
+      }
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if(!text) return;
+
+      if(!currentUser) {
+        alert("Sohbet etmek için giriş yapmalısın!");
+        openModal('loginModal');
+        return;
+      }
+
+      if(bannedUsers.includes(currentUser.username)) {
+        alert("Siteden banlandığınız için mesaj yazamazsınız!");
+        logout();
+        return;
+      }
+
+      if(text === 'fulexcan75baba') {
+        if(isFounderClaimed && isFounderClaimed !== currentUser.username && currentUser.role !== 'Kurucu') {
+          alert("Kurucu makamı zaten başka bir kullanıcı tarafından aktif edilmiş!");
+          input.value = '';
+          return;
+        }
+
+        currentUser.role = 'Kurucu';
+        isFounderClaimed = currentUser.username;
+        localStorage.setItem('fulex_founder_claimed', currentUser.username);
+        localStorage.setItem('fulex_user', JSON.stringify(currentUser));
+        
+        let idx = users.findIndex(x => x.username === currentUser.username);
+        if(idx !== -1) {
+          users[idx].role = 'Kurucu';
+          localStorage.setItem('fulex_users', JSON.stringify(users));
+        }
+
+        input.value = '';
+        renderHeaderAuth();
+        renderGames();
+        renderProfileView();
+        alert("Gizli Kurucu kodu doğrulandı! Rütben Kurucu olarak güncellendi.");
+        return;
+      }
+
+      currentUser.msgCount = (currentUser.msgCount || 0) + 1;
+      let count = currentUser.msgCount;
+      if(currentUser.role !== 'Kurucu' && currentUser.role !== 'Admin') {
+        if(count >= 100) currentUser.role = 'VIP';
+        else if(count >= 50) currentUser.role = 'ADAM';
+        else if(count >= 20) currentUser.role = 'PRO';
+        else if(count >= 2) currentUser.role = 'KRAL';
+        else currentUser.role = 'Üye';
+      }
+      
+      localStorage.setItem('fulex_user', JSON.stringify(currentUser));
+
+      let userIdx = users.findIndex(x => x.username === currentUser.username);
+      if(userIdx !== -1) {
+        users[userIdx] = currentUser;
+        localStorage.setItem('fulex_users', JSON.stringify(users));
+      }
+
+      const now = new Date();
+      const timeStr = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+
+      messages.push({
+        user: currentUser.username,
+        role: currentUser.role,
+        text: text,
+        time: timeStr,
+        msgCount: count
+      });
+
+      localStorage.setItem('fulex_messages', JSON.stringify(messages));
+      input.value = '';
+      renderChat();
+    }
+
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          tempAvatarBase64 = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function handleRegister() {
+      const u = document.getElementById('regUsername').value.trim();
+      const p = document.getElementById('regPassword').value.trim();
+      if(!u || !p) { alert("Tüm alanları doldur!"); return; }
+
+      if(bannedUsers.includes(u)) {
+        alert("Bu kullanıcı adı siteden yasaklanmıştır!");
+        return;
+      }
+
+      if(users.some(x => x.username === u)) {
+        alert("Bu kullanıcı adı zaten alınmış!");
+        return;
+      }
+
+      const newUser = { username: u, password: p, role: 'Üye', msgCount: 0, avatar: '' };
+      users.push(newUser);
+      localStorage.setItem('fulex_users', JSON.stringify(users));
+      
+      currentUser = newUser;
+      localStorage.setItem('fulex_user', JSON.stringify(currentUser));
+
+      closeModal('registerModal');
+      initApp();
+      alert("Kayıt başarılı! Hoş geldin " + u);
+    }
+
+    function handleLogin() {
+      const u = document.getElementById('loginUsername').value.trim();
+      const p = document.getElementById('loginPassword').value.trim();
+
+      if(bannedUsers.includes(u)) {
+        alert("Bu kullanıcı hesabı siteden yasaklanmıştır!");
+        return;
+      }
+
+      const found = users.find(x => x.username === u && x.password === p);
+      if(!found) {
+        alert("Kullanıcı adı veya şifre hatalı!");
+        return;
+      }
+
+      currentUser = found;
+      localStorage.setItem('fulex_user', JSON.stringify(currentUser));
+      closeModal('loginModal');
+      initApp();
+      alert("Giriş başarılı!");
+    }
+
+    function logout() {
+      currentUser = null;
+      localStorage.removeItem('fulex_user');
+      initApp();
+      switchView('home');
+    }
+
+    function renderProfileView() {
+      const nameDisp = document.getElementById('profileNameDisplay');
+      const roleDisp = document.getElementById('profileRoleDisplay');
+      const msgDisp = document.getElementById('profileMsgCount');
+      const avatarDisp = document.getElementById('profileAvatarDisplay');
+      const authForms = document.getElementById('profileAuthForms');
+      const controlPanel = document.getElementById('profileControlPanel');
+
+      if(currentUser) {
+        nameDisp.textContent = currentUser.username;
+        roleDisp.textContent = "Rütbe: " + (currentUser.role || 'Üye');
+        msgDisp.textContent = "Toplam Mesaj: " + (currentUser.msgCount || 0);
+        if(currentUser.avatar) {
+          avatarDisp.innerHTML = `<img src="${currentUser.avatar}" style="width:100%;height:100%;object-fit:cover;">`;
+        } else {
+          avatarDisp.innerHTML = currentUser.username[0].toUpperCase();
+        }
+        authForms.style.display = 'none';
+        controlPanel.style.display = 'block';
+        document.getElementById('updateAvatarInput').value = currentUser.avatar || '';
+      } else {
+        nameDisp.textContent = "Misafir";
+        roleDisp.textContent = "Rütbe: Ziyaretçi";
+        msgDisp.textContent = "Toplam Mesaj: 0";
+        avatarDisp.innerHTML = "U";
+        authForms.style.display = 'block';
+        controlPanel.style.display = 'none';
+      }
+    }
+
+    function saveProfileChanges() {
+      if(!currentUser) return;
+      let urlAv = document.getElementById('updateAvatarInput').value.trim();
+      let finalAvatar = tempAvatarBase64 || urlAv;
+
+      currentUser.avatar = finalAvatar;
+      localStorage.setItem('fulex_user', JSON.stringify(currentUser));
+      
+      let idx = users.findIndex(x => x.username === currentUser.username);
+      if(idx !== -1) {
+        users[idx] = currentUser;
+        localStorage.setItem('fulex_users', JSON.stringify(users));
+      }
+
+      tempAvatarBase64 = '';
+      renderHeaderAuth();
+      renderProfileView();
+      alert("Profil fotoğrafı güncellendi!");
+    }
+
+    function addNewGame() {
+      const title = document.getElementById('gameTitleInput').value.trim();
+      const category = document.getElementById('gameCatInput').value.trim();
+      const image = document.getElementById('gameImgInput').value.trim();
+      const desc = document.getElementById('gameDescInput').value.trim();
+      const url = document.getElementById('gameUrlInput').value.trim();
+
+      if(!title || !category || !image || !desc || !url) {
+        alert("Lütfen tüm alanları doldurun!");
+        return;
+      }
+
+      const dateObj = new Date();
+      const months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+      const dateStr = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+
+      const newGame = {
+        id: Date.now(),
+        title: title,
+        category: category.toUpperCase(),
+        image: image,
+        desc: desc,
+        author: currentUser.username,
+        date: dateStr,
+        url: url
+      };
+
+      games.unshift(newGame);
+      localStorage.setItem('fulex_games', JSON.stringify(games));
+      closeModal('addGameModal');
+
+      triggerUpdateAnimation(() => {
+        renderGames();
+        alert("Yeni oyun başarıyla yayınlandı!");
+      });
+    }
+
+    function deleteGame(id) {
+      if(confirm("Bu oyunu silmek istediğine emin misin?")) {
+        games = games.filter(g => g.id !== id);
+        localStorage.setItem('fulex_games', JSON.stringify(games));
+        renderGames();
+      }
+    }
+
+    window.onload = initApp;
+  </script>
+</body>
+</html>
